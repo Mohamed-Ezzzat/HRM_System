@@ -1,0 +1,67 @@
+﻿@*@model IEnumerable<HRM_System.Models.SalaryData>*@
+@model SalaryDataViewModel
+@inject SalaryView AddSalaryViewModel
+
+@{
+    ViewData["Title"] = "GetAll";
+}
+
+<h1>GetAll</h1>
+
+<p>
+    <partial name="_PartialViewTosalary" model="AddSalaryViewModel" />
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>اسم الموظف</th>
+            <th>القسم</th>
+            <th>الراتب الاساسي</th>
+            <th>عدد ايام الحضور</th>
+            <th>عدد ايام الغياب</th>
+            <th>الاضافي بالساعات</th>
+            <th>الخصم بالساعات</th>
+            <th>اجمالي الاضافي</th>
+            <th>اجمالي الخصم</th>
+            <th>الصافي</th>
+            @*<th>العمليات</th>*@
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+            <td>@Model.EmployeeName</td>
+            <td>@Model.Department</td>
+            <td>
+                @Model.Salary
+            </td>
+            <td>
+                @Model.RecordDays
+            </td>
+            <td>
+                @Model.Daysofabsence
+            </td>
+            <td>
+                @Model.Additional_hours
+            </td>
+            <td>
+                @Model.Discount_per_hour
+            </td>
+            <td>
+                @Model.ExtraTotal
+            </td>
+            <td>
+                @Model.TotalDiscount
+            </td>
+            <td>
+                @Model.NetSalary
+            </td>
+            @*<td colspan="2">
+                <a asp-action="Edit" asp-route-id="@Model.EmployeeId">Edit</a> |
+                <a href="@Url.Action("PrintSalary", new { employeeId = Model.EmployeeId })">Print</a>
+            </td>*@
+
+        </tr>
+
+    </tbody>
+</table>

@@ -1,0 +1,76 @@
+﻿@model Employee
+@{
+    ViewData["Title"] = "Eidt";
+}
+
+<h1>Update Employee</h1>
+
+<br />
+<br />
+
+<form asp-action="Edit">
+    <input hidden asp-for="Id" />
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label class="col-form-label" asp-for="Name">الاسم</label>
+        <input class="form-control" asp-for="Name" />
+        <span asp-validation-for="Name" class="text-white"></span>
+    </div>
+    <div class="form-group">
+        <label class="col-form-label" asp-for="Deparment">القسم</label>
+        <input class="form-control" asp-for="Deparment" />
+        <span asp-validation-for="Deparment" class="text-white">القسم</span>
+    </div>
+    <div class="form-group">
+        <label class="col-form-label" asp-for="Address">العنوان</label>
+        <input class="form-control" asp-for="Address" />
+        <span asp-validation-for="Address" class="text-white"></span>
+    </div>
+    <div class="form-group">
+        <label class="col-form-label" asp-for="PhoneNumber">رقم الهاتف</label>
+        <input class="form-control" asp-for="PhoneNumber" />
+        <span asp-validation-for="PhoneNumber" class="text-white"></span>
+    </div>
+    <div class="form-group">
+        <label class="col-form-label" asp-for="Gender">النوع</label>
+        <input class="form-control" asp-for="Gender" />
+        <span asp-validation-for="Gender" class="text-white"></span>
+    </div>
+    <div class="form-group">
+        <label class="col-form-label" asp-for="Nationality">الجنسية</label>
+        <input class="form-control" asp-for="Nationality" />
+        <span asp-validation-for="Nationality" class="text-white"></span>
+    </div>
+    <div class="form-group">
+        <label class="col-form-label" asp-for="Age">العمر</label>
+        <input class="form-control" asp-for="Age" />
+        <span asp-validation-for="Age" class="text-white"></span>
+    </div>
+    <div class="form-group">
+        <label class="col-form-label" asp-for="NationalID">الرقم القومي</label>
+        <input class="form-control" asp-for="NationalID" />
+        <span asp-validation-for="NationalID" class="text-white"></span>
+    </div>
+    <div class="form-group">
+        <label class="col-form-label" asp-for="WorkData.Dateofcontract">تاريخ التعاقد</label>
+        <input class="form-control" asp-for="WorkData.Dateofcontract" />
+        <span asp-validation-for="WorkData.Dateofcontract" class="text-white"></span>
+    </div>
+    <div class="form-group">
+        <label class="col-form-label" asp-for="WorkData.Salary">المرتب</label>
+        <input class="form-control" asp-for="WorkData.Salary" />
+        <span asp-validation-for="WorkData.Salary" class="text-white"></span>
+    </div>
+    <div class="form-group">
+        <label class="col-form-label" asp-for="WorkData.Attendance">موعد الحضور</label>
+        <input class="form-control" asp-for="WorkData.Attendance" />
+        <span asp-validation-for="WorkData.Attendance" class="text-white"></span>
+    </div>
+    <div class="form-group">
+        <label class="col-form-label" asp-for="WorkData.Departure">موعد الانصراف</label>
+        <input class="form-control" asp-for="WorkData.Departure" />
+        <span asp-validation-for="WorkData.Departure" class="text-white"></span>
+    </div>
+    <input type="submit" class="btn btn-primary" value="حفظ" />
+</form>
+

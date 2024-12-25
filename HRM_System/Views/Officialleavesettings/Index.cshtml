@@ -1,0 +1,47 @@
+﻿@model IEnumerable<HRM_System.Models.Officialleavesettings>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>الاجازات الرسمية</h1>
+
+<partial name="_CreateForm" model="new Officialleavesettings()" />
+
+<table class="table table-striped" border="1">
+    <thead>
+        <tr>
+            <th>
+                الاسم
+            </th>
+            <th>
+                التاريخ
+            </th>
+            <th>
+                العمليات
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateTime)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-primary">تعديل</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger">حذف</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@*@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}*@

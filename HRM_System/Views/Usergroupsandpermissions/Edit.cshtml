@@ -1,0 +1,165 @@
+﻿@model HRM_System.Models.Usergroupsandpermissions
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Groups and Permissions</h4>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Edit">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div>
+
+                <table border=1 width="600px" cellpadding=10>
+                    <thead>
+                        <tr>
+                            <th> الصفحة </th>
+                            <th> اضافة </th>
+                            <th> حذف </th>
+                            <th> تعديل </th>
+                            <th> عرض </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                الموظفين
+                            </td>
+                            <td>
+                                <label class="anim">
+                                    <input type="checkbox" class="checkbox" asp-for="Permission_Employee_Create" />
+                                </label>
+
+                            </td>
+                            <td>
+                                <label class="anim">
+                                    <input type="checkbox" class="checkbox" asp-for="Permission_Employee_Delete" />
+                                </label>
+
+                            </td>
+                            <td>
+
+                                <label class="anim">
+                                    <input type="checkbox" class="checkbox" asp-for="Permission_Employee_Edit" />
+                                </label>
+                            </td>
+                            <td>
+
+                                <label class="anim">
+                                    <input type="checkbox" class="checkbox" asp-for="Permission_Employee_View" />
+                                </label>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                الاعدادات العامة
+                            </td>
+                            <td>
+                                <label class="anim">
+                                    <input type="checkbox" class="checkbox" asp-for="Permission_Payroll_Create" />
+                                </label>
+
+                            </td>
+                            <td>
+                                <label class="anim">
+                                    <input type="checkbox" class="checkbox" asp-for="Permission_Payroll_Delete" />
+                                </label>
+
+                            </td>
+                            <td>
+
+                                <label class="anim">
+                                    <input type="checkbox" class="checkbox" asp-for="Permission_Payroll_Edit" />
+                                </label>
+                            </td>
+                            <td>
+
+                                <label class="anim">
+                                    <input type="checkbox" class="checkbox" asp-for="Permission_Payroll_View" />
+                                </label>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                الحضور والانصراف
+                            </td>
+                            <td>
+                                <label class="anim">
+                                    <input type="checkbox" class="checkbox" asp-for="Permission_GeneralSettings_Create" />
+                                </label>
+
+                            </td>
+                            <td>
+                                <label class="anim">
+                                    <input type="checkbox" class="checkbox" asp-for="Permission_GeneralSettings_Delete" />
+                                </label>
+
+                            </td>
+                            <td>
+
+                                <label class="anim">
+                                    <input type="checkbox" class="checkbox" asp-for="Permission_GeneralSettings_Edit" />
+                                </label>
+                            </td>
+                            <td>
+
+                                <label class="anim">
+                                    <input type="checkbox" class="checkbox" asp-for="Permission_GeneralSettings_View" />
+                                </label>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                تقرير الرواتب
+                            </td>
+                            <td>
+                                <label class="anim">
+                                    <input type="checkbox" class="checkbox" asp-for="Permission_Attendance_Create" />
+                                </label>
+                            </td>
+                            <td>
+                                <label class="anim">
+                                    <input type="checkbox" class="checkbox" asp-for="Permission_Attendance_Delete" />
+                                </label>
+                            </td>
+                            <td>
+                                <label class="anim">
+                                    <input type="checkbox" class="checkbox" asp-for="Permission_Attendance_Edit" />
+                                </label>
+                            </td>
+                            <td>
+                                <label class="anim">
+                                    <input type="checkbox" class="checkbox" asp-for="Permission_Attendance_View" />
+                                </label>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

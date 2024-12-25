@@ -1,0 +1,113 @@
+﻿@model  SalaryDataViewModel
+@inject IEntityRepository<Employee> Employee
+
+@{
+    ViewData["Title"] = "GetAll";
+}
+@{
+    var employee = new SelectList(await Employee.GetAllAsync(), "Name", "Name");
+}
+@{
+    var Groups = new SelectList(Enumerable.Range(2005, DateTime.Now.Year - 2004).Reverse());
+}
+
+<h1>رواتب الوظفين</h1>
+
+
+
+<form class="my-3">
+
+    <div class="form-group">
+        <label class="control-label">اسم الموظف</label>
+        <select name="Name" class="form-control" asp-items="employee">
+            <option> اختار الموظف</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">الشهر</label>
+        <select name="Month" class="form-control" >
+            <option></option>
+            @foreach (var month in Enum.GetValues<Months>())
+            {
+                <option>@month.ToString()</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="control-label">السنة</label>
+        <select name="Year" class="form-control" asp-items="Groups">
+            <option></option>
+
+        </select>
+    </div>
+
+    <button type="submit" value="حفظ" class="btn btn-success btn-block">Search</button>
+</form>
+
+@if (Model != null && Model.EmployeeName !=null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>اسم الموظف</th>
+                <th>القسم</th>
+                <th>الراتب الاساسي</th>
+                <th>عدد ايام الحضور</th>
+                <th>عدد ايام الغياب</th>
+                <th>الاضافي بالساعات</th>
+                <th>الخصم بالساعات</th>
+                <th>اجمالي الاضافي</th>
+                <th>اجمالي الخصم</th>
+                <th>الصافي</th>
+                @*<th>العمليات</th>*@
+            </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+                <td>@Model.EmployeeName</td>
+                    <td>@Model.Department</td>
+                <td>
+                    @Model.Salary
+                </td>
+                <td>
+                    @Model.RecordDays
+                </td>
+                <td>
+                    @Model.Daysofabsence
+                </td>
+                <td>
+                    @Model.Additional_hours
+                </td>
+                <td>
+                    @Model.Discount_per_hour
+                </td>
+                <td>
+                    @Model.ExtraTotal
+                </td>
+                <td>
+                    @Model.TotalDiscount
+                </td>
+                <td>
+                    @Model.NetSalary
+                </td>
+                @*<td colspan="2">
+            <a asp-action="Edit" asp-route-id="@Model.EmployeeId">Edit</a> |
+            <a href="@Url.Action("PrintSalary", new { employeeId = Model.EmployeeId })">Print</a>
+            </td>*@
+
+            </tr>
+        
+
+
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="mt-4 alert alert-warning">
+        <h4> Enter The Data</h4>
+    </div>
+}
+

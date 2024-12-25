@@ -1,0 +1,54 @@
+﻿@model IEnumerable<AttendanceAndDepartureofEmployees>
+
+@{
+    ViewData["Title"] = "Search";
+}
+
+<h1>تقرير حضور وانصراف الموظفين</h1>
+<br />
+
+<a asp-action="Search" asp-controller="AttendanceAndDepartureofEmployees" > </a>
+ 
+<form class="my-3" asp-action="Search" >
+    <div class="col-sm-8">
+        <input placeholder="Search By Employee Name or Department" name="empname" class="form-control" />
+    </div>
+    <div class="col-sm-8">
+        <input placeholder="Entry Time" name="startDate" class="form-control" />
+    </div>
+    <div class="col-sm-8">
+        <input placeholder="Check_out Time" name="endDate" class="form-control" />
+    </div>
+    
+
+    <button type="submit">Search</button>
+</form>
+<table>
+    <thead>
+
+        <tr>
+            <th>Department</th>
+            <th>Employee Name</th>
+            <th>Entry Time</th>
+            <th>Check_out Time</th>
+            <th>Attendance Date</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var entry in Model)
+        {
+            <tr>
+                <td>@entry.Employee.Deparment</td>
+                <td>@entry.Employee.Name</td>
+                <td>@entry.TimeAttendance</td>
+                <td>@entry.Check_outTime</td>
+                <td>@entry.Date.ToShortDateString()</td>
+                <td>
+                    <button>Edit</button>
+                    <button>Print</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

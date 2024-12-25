@@ -1,0 +1,53 @@
+﻿﻿
+@model PermissionsFormViewModel
+
+@{
+    ViewData["Title"] = "Manage Permissions";
+}
+
+<form asp-action="ManagePermissions" method="post">
+    <div class="card mt-4">
+        <div class="card-header">
+            <h2>@Model.RoleName</h2>
+            Add/Remove Permissions
+        </div>
+        <div class="card-body">
+            <input type="hidden" asp-for="RoleId" />
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Module</th>
+                        <th>Permission</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.RoleCalims.Count; i++)
+                    {
+                        <tr>
+                            <td>
+                                @*@Html.DisplayNameFor(model => @model.RoleCalims[i].IsSelected)*@
+                                
+                                <div class="form-check m-1">
+
+                                    <input type="hidden" asp-for="@Model.RoleCalims[i].DisplayValue" readonly/>
+                                    <input asp-for="@Model.RoleCalims[i].IsSelected" class="form-check-input" readonly/>
+
+                                </div>
+                            </td>
+
+                            <td>@Model.RoleCalims[i].DisplayValue.Split('_')[1]</td>
+                            <td>@Model.RoleCalims[i].DisplayValue.Split('_')[2]</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div asp-validation-summary="All" class="text-danger"></div>
+        </div>
+        <div class="card-footer">
+            <a class="btn btn-primary" asp-action="ManagePermissions" asp-route-roleId="@Model.RoleId">Edit</a>
+            <a class="btn btn-danger" asp-action="Delete" asp-route-roleId="@Model.RoleId">Delete</a>
+            <a asp-action="Index" class="btn btn-secondary">الغاء</a>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,87 @@
+﻿@using HRM_System.Contants
+@model Employee
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h3>Add New Employee</h3>
+
+<br />
+<br />
+<div class="col-md-5">
+
+    <form asp-action="Create">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <h3>البيانات الاساسية</h3>
+        <div class="form-group">
+            <label class="col-form-label" asp-for="Name">اسم الموظفين</label>
+            <input class="form-control" asp-for="Name" />
+            <span asp-validation-for="Name" class="text-white">اسم الموظفين</span>
+        </div>
+        <div class="form-group">
+            <label class="col-form-label" asp-for="Deparment">القسم</label>
+            <input class="form-control" asp-for="Deparment" />
+            <span asp-validation-for="Deparment" class="text-white">القسم</span>
+        </div>
+        <div class="form-group">
+            <label class="col-form-label" asp-for="Address">العنوان</label>
+            <input class="form-control" asp-for="Address" />
+            <span asp-validation-for="Address" class="text-white">العنوان</span>
+        </div>
+        <div class="form-group">
+            <label class="col-form-label" asp-for="PhoneNumber">رقم التليفون</label>
+            <input class="form-control" asp-for="PhoneNumber" />
+            <span asp-validation-for="PhoneNumber" class="text-white">رقم التليفون</span>
+        </div>
+        <div class="form-group">
+            <label class="col-form-label" asp-for="Gender">النوع</label>
+            <select class="form-select" asp-for="Gender" asp-items="Html.GetEnumSelectList<GenderType>()"></select>
+            <span asp-validation-for="Gender" class="text-white"></span>
+        </div>
+        <div class="form-group">
+            <label class="col-form-label" asp-for="Nationality">الجنسية</label>
+            <input class="form-control" asp-for="Nationality" />
+            <span asp-validation-for="Nationality" class="text-white">الجنسية</span>
+        </div>
+        <div class="form-group">
+            <label class="col-form-label" asp-for="Age">العمر</label>
+            <input class="form-control" asp-for="Age" />
+            <span asp-validation-for="Age" class="text-white">العمر</span>
+        </div>
+        <div class="form-group">
+            <label class="col-form-label" asp-for="NationalID">الرقم القومي</label>
+            <input class="form-control" asp-for="NationalID" />
+            <span asp-validation-for="NationalID" class="text-white">الرقم القومي</span>
+        </div>
+        
+        <h3>بيانات العمل</h3>
+        <div class="form-group">
+            <label class="col-form-label" asp-for="WorkData.Dateofcontract">تاريخ التعاقد</label>
+            <input type="date" class="form-control" asp-for="WorkData.Dateofcontract"/>
+            <span asp-validation-for="WorkData.Dateofcontract" class="text-white">تاريخ التعاقد</span>
+        </div>
+        <div class="form-group">
+            <label class="col-form-label" asp-for="WorkData.Salary">الراتب</label>
+            <input class="form-control" asp-for="WorkData.Salary" />
+            <span asp-validation-for="WorkData.Salary" class="text-white">التراتب</span>
+        </div>
+        <div class="form-group">
+            <label class="col-form-label" asp-for="WorkData.Attendance">موعد الحضور</label>
+            <input class="form-control" asp-for="WorkData.Attendance" />
+            <span asp-validation-for="WorkData.Attendance" class="text-white">موعد الحضور</span>
+        </div>
+        <div class="form-group">
+            <label class="col-form-label" asp-for="WorkData.Departure">موعد الانصراف</label>
+            <input class="form-control" asp-for="WorkData.Departure" />
+            <span asp-validation-for="WorkData.Departure" class="text-white">موعد الانصراف</span>
+        </div>
+        <input type="submit" class="btn btn-primary" value="حفظ" />
+
+    </form>
+
+</div>
+@section scriptSection{
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

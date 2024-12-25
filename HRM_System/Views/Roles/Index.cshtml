@@ -1,0 +1,43 @@
+﻿﻿
+@model IEnumerable<IdentityRole>
+
+@{
+    ViewData["Title"] = "GroupsPermissions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<h1>Groups and Permissions</h1>
+@*
+<partial name="_RoleForm" model="new RoleFormViewModel()" />*@
+
+<table class="table table-striped mt-4">
+    <thead>
+        <tr class="bg-primary text-white">
+            <th>Role Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var role in Model)
+        {
+            <tr>
+                <td>@role.Name</td>
+                <td>
+                    <a class="btn btn-primary" asp-action="ManagePermissions" asp-route-roleId="@role.Id">Edit</a>
+                    <a class="btn btn-primary" asp-action="Details" asp-route-roleId="@role.Id">Details</a>
+                    @*<a class="btn btn-danger" asp-action="Delete" asp-route-roleId="@role.Id">Delete</a>*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section scriptSection{
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+
+

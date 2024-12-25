@@ -1,0 +1,67 @@
+﻿@model SalaryDataViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1> رواتب الموظفين</h1>
+
+<partial name="_PartialViewTosalary" />
+<div>
+    <h4>SalaryData</h4>
+    <hr />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>اسم الموظف</th>
+                <th>القسم</th>
+                <th>الراتب الاساسي</th>
+                <th>عدد ايام الحضور</th>
+                <th>عدد ايام الغياب</th>
+                <th>الاضافي بالساعات</th>
+                <th>الخصم بالساعات</th>
+                <th>اجمالي الاضافي</th>
+                <th>اجمالي الخصم</th>
+                <th>العمليات</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td> @Html.DisplayNameFor(model => model.EmployeeName)</td>
+                <td>@Html.DisplayFor(model => model.Department)</td>
+                <td>
+                    @Html.DisplayNameFor(model => model.Salary)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(model => model.RecordDays)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(model => model.Daysofabsence)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(model => model.Additional_hours)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(model => model.Discount_per_hour)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(model => model.ExtraTotal)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(model => model.TotalDiscount)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(model => model.NetSalary)
+                </td>
+                <td colspan="2">
+                    @*<a asp-action="Edit" asp-route-id="@Model.EmployeeId">Edit</a> |
+                    <a href="@Url.Action("PrintSalary", new { employeeId = Model.EmployeeId })">Print</a>*@
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+@*<div>
+    <a asp-action="Edit" asp-route-id="@Model.EmployeeId">Edit</a> |
+    <a asp-action="GetAll">back to list</a>
+</div>*@

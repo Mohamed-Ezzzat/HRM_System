@@ -1,0 +1,55 @@
+﻿@model HRviewModel
+@inject RoleManager<IdentityRole> roleManager
+@{
+    var Groups = new SelectList( roleManager.Roles, "Name", "Name");
+}
+
+@{
+    ViewData["Title"] = "CreateAdmin";
+}
+
+<h4>Add New Admin</h4>
+<hr />
+<div>
+    <div class="col-md-4">
+        <form asp-action="CreateAdmin">
+
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FullName" class="control-label">الاسم بالكامل </label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label">اسم المستخدم</label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label">البريد الالكتروني</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label">الباسورد</label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="RoleName" class="control-label">الصلاحيات</label>
+                <select asp-for="RoleName" class="form-control" asp-items="Groups">
+                    <option> الصلاحيات</option>
+                </select>
+                <span asp-validation-for="RoleName" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <input type="submit" value="حفظ" class="btn btn-primary" />
+            </div>
+        </form>
+
+    </div>
+</div>
+
+

@@ -1,0 +1,133 @@
+﻿@model IEnumerable<HRM_System.Models.Usergroupsandpermissions>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>All Groups Permissions</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary" >Create New</a>
+</p>
+<table class="table table-striped" border="1">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                Employee Create
+            </th>
+            <th>
+                Employee View
+            </th>
+            <th>
+                Employee Edit
+            </th>
+            <th>
+                Employee Delete
+            </th>
+            <th>
+                Payroll Create
+            </th>
+            <th>
+                Payroll View
+            </th>
+            <th>
+                Payroll Edit
+            </th>
+            <th>
+                Payroll Delete
+            </th>
+            <th>
+                GeneralSettings Create
+            </th>
+            <th>
+                GeneralSettings View
+            </th>
+            <th>
+                GeneralSettings Edit
+            </th>
+            <th>
+                GeneralSettings Delete
+            </th>
+            <th>
+                Attendance Create
+            </th>
+            <th>
+                Attendance View
+            </th>
+            <th>
+                Attendance Edit
+            </th>
+            <th>
+                Attendance Delete
+            </th>
+            <th> 
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Permission_Employee_Create)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Permission_Employee_View)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Permission_Employee_Edit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Permission_Employee_Delete)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Permission_Payroll_Create)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Permission_Payroll_View)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Permission_Payroll_Edit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Permission_Payroll_Delete)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Permission_GeneralSettings_Create)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Permission_GeneralSettings_View)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Permission_GeneralSettings_Edit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Permission_GeneralSettings_Delete)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Permission_Attendance_Create)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Permission_Attendance_View)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Permission_Attendance_Edit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Permission_Attendance_Delete)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

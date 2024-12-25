@@ -1,0 +1,46 @@
+﻿@model SalaryView
+@inject IEntityRepository<Employee> Employee
+@{
+    var employee = new SelectList(await Employee.GetAllAsync(), "Name", "Name");
+}
+@{
+    var Groups = new SelectList(Enumerable.Range(2005, DateTime.Now.Year - 2004).Reverse());
+}
+
+<form class="my-3">
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="Name" class="control-label">اسم الموظف</label>
+        <select asp-for="Name" class="form-control" asp-items="employee">
+            <option> اختار الموظف</option>
+        </select>
+        <span asp-validation-for="Name" class="text-danger"></span>
+
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Month" class="control-label">الشهر</label>
+        <select asp-for="Month">
+            <option></option>
+            @foreach (var month in Enum.GetValues<Months>())
+            {
+                <option>@month.ToString()</option>
+            }
+        </select>
+        <span asp-validation-for="Month" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Years" class="control-label">السنة</label>
+        <select asp-for="Years" class="form-control" asp-items="Groups">
+            <option></option>
+          
+        </select>
+        <span asp-validation-for="Years" class="text-danger"></span>
+    </div>
+
+
+
+    <button type="submit" value="حفظ" class="btn btn-success btn-block">Search</button>
+</form>
